@@ -21,8 +21,7 @@ import com.example.expandable.ui.home.HomeFragment;
 
 public class CategoryFragment extends Fragment{
 
-    private CategoryViewModel homeViewModel;
-    ImageView img;
+    ImageView officetables,officechairs,bookshelves;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,16 +31,46 @@ public class CategoryFragment extends Fragment{
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(CategoryViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_category, container, false);
-        img=root.findViewById(R.id.imageView2);
-        img.setOnClickListener(new View.OnClickListener() {
+        officetables=root.findViewById(R.id.officetables);
+        officechairs=root.findViewById(R.id.officechairs);
+        bookshelves=root.findViewById(R.id.bookshelves);
+        officetables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,new CategoryViewFragment()).addToBackStack("tag1").commit();
+                Bundle bundle=new Bundle();
+                bundle.putString("key","officetables");
+                CategoryViewFragment category=new CategoryViewFragment();
+                category.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,category).addToBackStack("tag1").commit();
             }
         });
+
+
+        officechairs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("category","officechairs");
+                CategoryViewFragment category=new CategoryViewFragment();
+                category.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,category).addToBackStack("tag1").commit();
+            }
+        });
+
+
+        bookshelves.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("category","officetables");
+                CategoryViewFragment category=new CategoryViewFragment();
+                category.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,category).addToBackStack("tag1").commit();
+            }
+        });
+
         return root;
     }
 }

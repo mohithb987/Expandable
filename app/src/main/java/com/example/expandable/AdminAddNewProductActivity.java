@@ -10,9 +10,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
@@ -36,6 +39,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     String productRandomKey;
     public Button addNewButton;
     public ImageView inputProductImage;
+
+    Spinner spinner;
+    String finalCategory;
+
     static final int GalleryPick = 1;
     private StorageReference productImagesRef;
     Uri imageUri;
@@ -54,6 +61,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         inputProductName = findViewById(R.id.product_name);
         inputProductDescription = findViewById(R.id.product_description);
         inputProductPrice = findViewById(R.id.product_price);
+
+        spinner=findViewById(R.id.spinner);
+        setSpinner();
+
         productImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef  = FirebaseDatabase.getInstance().getReference().child("Products");
         inputProductImage.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +81,31 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
         Toast.makeText(this,categoryName, Toast.LENGTH_SHORT).show();
     }
+    public void setSpinner(){
+        if(categoryName.equals("officetables")){
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.officetables_array, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+        }
+        else if(categoryName.equals("officechairs")){
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.officechairs_array, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+        }
+        else if(categoryName.equals("bookshelves")){
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.bookshelves_array, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+        }
+        else{
+            Toast.makeText(AdminAddNewProductActivity.this,"Spinner error",Toast.LENGTH_LONG).show();
+        }
+         finalCategory = spinner.getSelectedItem().toString();
+
+    }
+
     public void OpenGallery() {
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
@@ -154,10 +184,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                     @Override
                     public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                         if(!task.isSuccessful()){
-
                             throw task.getException();
-
-
                         }
                         downloadImageUrl = filepath.getDownloadUrl().toString();
                         return filepath.getDownloadUrl();
@@ -189,6 +216,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("description",description);
         productMap.put("image",downloadImageUrl);
         productMap.put("category",categoryName);
+        productMap.put("subcategory",finalCategory);
         productMap.put("price",price);
         productMap.put("pname",productName);
 

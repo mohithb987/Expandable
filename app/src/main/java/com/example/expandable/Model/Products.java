@@ -1,13 +1,14 @@
 package com.example.expandable.Model;
 
 public class Products {
-    public String category,pname,image,description,price,pid,date,time;
+    public String category,subcategory,pname,image,description,price,pid,date,time;
     public Products(){ //COMPULSORY
 // right-click here and click "generate" to get the below methods
     }
 
-    public Products(String category, String pname, String image, String description, String price, String pid, String date, String time) {
+    public Products(String category,String subcategory, String pname, String image, String description, String price, String pid, String date, String time) {
         this.category = category;
+        this.subcategory=subcategory;
         this.pname = pname;
         this.image = image;
         this.description = description;
@@ -23,6 +24,14 @@ public class Products {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
     }
 
     public String getPname() {

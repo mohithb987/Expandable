@@ -14,4 +14,19 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="officetables_array">
+        <item>Boss Table</item>
+        <item>Conference Table</item>
+        <item>Study Table</item>
+    </string-array>
+
+    <string-array name="officechairs_array">
+        <item>Study Chair</item>
+        <item>Visitor Chair</item>
+    </string-array>
+    <string-array name="bookshelves_array">
+        <item>Engineered Wood</item>
+        <item>Solid Wood</item>
+    </string-array>
 </resources>

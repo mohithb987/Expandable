@@ -23,24 +23,30 @@ import com.squareup.picasso.Picasso;
 
 public class CategoryViewFragment extends Fragment {
 
+    RecyclerView recyclerView1;
+    RecyclerView.LayoutManager layoutManager1;
 
-    public CategoryViewFragment() { }
 
-    DatabaseReference ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
+    public CategoryViewFragment() {
+        // Required empty public constructor
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root= inflater.inflate(R.layout.fragment_category_view, container, false);
-        recyclerView = root.findViewById(R.id.recycler_menu1);
-        recyclerView.setHasFixedSize(true); //COMPULSORY
-        layoutManager = new LinearLayoutManager(root.getContext()); //"root.getContext()" instad of "this"
-        recyclerView.setLayoutManager(layoutManager);
+        View root = inflater.inflate(R.layout.fragment_category_view, container, false);
+        Bundle bundle = this.getArguments();
+        String variable = bundle.getString("key");
+        recyclerView1 = root.findViewById(R.id.recycler_menu1);
+        DatabaseReference ProductsRef1 = FirebaseDatabase.getInstance().getReference().child("Products");
 
-        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(ProductsRef.orderByChild("category").equalTo("sportsTshirts"),Products.class).build();
+        recyclerView1.setHasFixedSize(true);
+        layoutManager1 = new LinearLayoutManager(root.getContext());
+        recyclerView1.setLayoutManager(layoutManager1);
+
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(ProductsRef1.orderByChild("category").equalTo(variable),Products.class).build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
@@ -66,9 +72,10 @@ public class CategoryViewFragment extends Fragment {
 
         };
 
-        recyclerView.setAdapter(adapter);
+        recyclerView1.setAdapter(adapter);
         adapter.startListening();
 
         return root;
+
     }
 }
