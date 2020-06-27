@@ -109,16 +109,19 @@ public class LoginActivity extends AppCompatActivity {
                     if(userData.getPhone().equals(phone)){
                         if(userData.getPassword().equals(Password)){
                             if(parentDbname.equals("Admins")){
-                                Toast.makeText(LoginActivity.this,"logged in Succesfully",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this ,"logged in Succesfully",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(LoginActivity.this,AdminCategoryActivity.class);
                                 startActivity(intent);
+                                finish();
                             }
                             else{
                                 Toast.makeText(LoginActivity.this,"logged in Succesfully",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                 startActivity(intent);
+                                finish();
+
                             }
 
                         }

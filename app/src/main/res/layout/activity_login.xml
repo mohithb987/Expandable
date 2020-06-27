@@ -4,48 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@drawable/login">
-    
+    android:background="#A18C73"
+    tools:context=".LoginActivity">
+
     <ImageView
         android:id="@+id/loginAppLogo"
         android:layout_width="300dp"
         android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
         android:src="@drawable/applogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
-        />
+        app:srcCompat="@drawable/applogo" />
+
     <EditText
         android:id="@+id/login_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginAppLogo"
-        android:background="@drawable/input_design"
-        android:padding="20dp"
-        android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginRight="15dp"
         android:hint="Phone Number"
         android:inputType="number"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:padding="20dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="#200606"
         android:textSize="17sp"
-        android:textStyle="bold"/>
+        android:textStyle="normal" />
+
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_phone_number"
-        android:background="@drawable/input_design"
-        android:padding="20dp"
-        android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginRight="15dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:padding="20dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="#FF200606"
         android:textSize="17sp"
-        android:textStyle="bold"/>
+        android:textStyle="normal" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linear_layout_1"
@@ -60,21 +69,20 @@
             style="@style/Material.Drawable.CheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:gravity="center"
             android:text="@string/remember_me"
-            android:textColor="@color/colorPrimaryDark"
-            app:cbd_strokeColor="@color/colorPrimaryDark"
-            android:layout_marginLeft="20dp"/>
-        
+            android:textColor="@android:color/black"
+            app:cbd_strokeColor="@android:color/black" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forgot Password?"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:layout_marginLeft="60dp"
-            />
+            android:text="Forgot Password?"
+            android:textColor="#080809"
+            android:textSize="16sp"
+            android:textStyle="normal" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button
@@ -82,37 +90,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linear_layout_1"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="36dp"
         android:layout_marginRight="15dp"
-        android:background="@drawable/buttons"
+        android:layout_marginBottom="10dp"
+        android:background="@color/common_google_signin_btn_text_light_focused"
         android:padding="20dp"
-        android:textAllCaps="false"
         android:text="LOGIN"
-        android:textColor="@android:color/white"
-        />
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
     <TextView
-    android:id="@+id/adminTextview"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/loginButton"
-    android:text="I'm an Admin"
-    android:textColor="@color/colorPrimaryDark"
-    android:textSize="16sp"
-    android:textStyle="bold"
-    android:layout_marginLeft="280dp"
-    />
+        android:id="@+id/adminTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginButton"
+        android:layout_marginLeft="280dp"
+        android:text="I'm an Admin"
+        android:textColor="#3C2317"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/userTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginButton"
+        android:layout_marginStart="20dp"
         android:text="I'm not an Admin"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginStart="20dp"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 </RelativeLayout>

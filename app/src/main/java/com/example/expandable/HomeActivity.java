@@ -3,7 +3,6 @@ package com.example.expandable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 
 import com.example.expandable.ui.cart.CartFragment;
 import com.example.expandable.ui.category.CategoryFragment;
@@ -15,12 +14,6 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -63,22 +56,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START))
+        if (drawer.isDrawerOpen(GravityCompat.START))
             drawer.closeDrawer(GravityCompat.START);
-        else
-            super.onBackPressed();
+        super.onBackPressed();
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack("tag").commit();
                 break;
             case R.id.nav_cart:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CartFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CartFragment()).addToBackStack("tag").commit();
                 break;
             case R.id.nav_categories:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CategoryFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CategoryFragment()).addToBackStack("tag").commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
