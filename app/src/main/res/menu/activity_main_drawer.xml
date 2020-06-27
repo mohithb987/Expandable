@@ -4,16 +4,19 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/orders"
+            android:title="Home"
+            android:iconTint="@android:color/white"/>
+
         <item
             android:id="@+id/nav_cart"
             android:icon="@drawable/nav_cart"
             android:title="Cart"
             android:iconTint="@android:color/white"/>
-        <item
-            android:id="@+id/nav_orders"
-            android:icon="@drawable/orders"
-            android:title="Orders"
-            android:iconTint="@android:color/white"/>
+
 
         <item
             android:id="@+id/nav_categories"
@@ -27,11 +30,7 @@
             android:title="Settings"
             android:iconTint="@android:color/white"/>
 
-        <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/logout"
-            android:title="Logout"
-            android:iconTint="@android:color/white"/>
+
 
 
 

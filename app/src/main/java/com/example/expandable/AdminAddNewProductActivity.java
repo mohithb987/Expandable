@@ -166,9 +166,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()) {
+                            loadingBar.dismiss();
                             downloadImageUrl = task.getResult().toString();
                             Toast.makeText(AdminAddNewProductActivity.this, "Getting product image url  succesfully", Toast.LENGTH_SHORT).show();
-                            SaveProductInformatio();
+                            SaveProductInformation();
                         }
                     }
 
@@ -180,13 +181,13 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
 
     }
-    public void SaveProductInformatio(){
+    public void SaveProductInformation(){
         HashMap<String,Object> productMap = new HashMap<>();
         productMap.put("pid",productRandomKey);
         productMap.put("date",saveCurrentDate);
         productMap.put("time",saveCurrentTime);
         productMap.put("description",description);
-        productMap.put("image",imageUri);
+        productMap.put("image",downloadImageUrl);
         productMap.put("category",categoryName);
         productMap.put("price",price);
         productMap.put("pname",productName);

@@ -1,4 +1,4 @@
-package com.example.expandable.ui.gallery;
+package com.example.expandable.ui.category;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.expandable.R;
 
-public class GalleryFragment extends Fragment {
+public class CategoryFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private CategoryViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        homeViewModel =
+                ViewModelProviders.of(this).get(CategoryViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_category, container, false);
+        final TextView textView = root.findViewById(R.id.text_category);
+        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
