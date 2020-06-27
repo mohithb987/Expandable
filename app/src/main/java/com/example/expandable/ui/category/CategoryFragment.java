@@ -15,10 +15,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.expandable.CategoryViewFragment;
 import com.example.expandable.R;
 import com.example.expandable.ui.home.HomeFragment;
 
-public class CategoryFragment extends Fragment implements OnBackPressedDispatcherOwner {
+public class CategoryFragment extends Fragment{
 
     private CategoryViewModel homeViewModel;
     ImageView img;
@@ -38,17 +39,9 @@ public class CategoryFragment extends Fragment implements OnBackPressedDispatche
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getChildFragmentManager().beginTransaction().replace(R.id.fragment_category ,new HomeFragment()).addToBackStack("tag").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,new CategoryViewFragment()).addToBackStack("tag1").commit();
             }
         });
         return root;
-    }
-
-
-    @NonNull
-    @Override
-    public OnBackPressedDispatcher getOnBackPressedDispatcher() {
-        getChildFragmentManager().beginTransaction().replace(R.id.fragment_home,new CategoryFragment()).commit();
-        return null;
     }
 }
