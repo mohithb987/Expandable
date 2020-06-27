@@ -1,63 +1,42 @@
 {
   "project_info": {
-    "project_number": "842250011410",
-    "firebase_url": "https://testingdb-61d9c.firebaseio.com",
-    "project_id": "testingdb-61d9c",
-    "storage_bucket": "testingdb-61d9c.appspot.com"
+    "project_number": "319046698481",
+    "firebase_url": "https://officefurniture-722ba.firebaseio.com",
+    "project_id": "officefurniture-722ba",
+    "storage_bucket": "officefurniture-722ba.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:842250011410:android:a484a2b87c6209f53429cb",
+        "mobilesdk_app_id": "1:319046698481:android:e9cdaeabc9d77d5054f050",
         "android_client_info": {
           "package_name": "com.example.expandable"
         }
       },
       "oauth_client": [
         {
-          "client_id": "842250011410-9g1mnghdq6cnb4usemjk9sgiigamnulf.apps.googleusercontent.com",
+          "client_id": "319046698481-4vgpbr3mpteojm0dta7ob0r086iojsd4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.expandable",
+            "certificate_hash": "e287e6446971d47468881ea0b74cb3df4a0aa493"
+          }
+        },
+        {
+          "client_id": "319046698481-hpr5k5itg33igh10f498c7r319vgco1f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCa9XH0qvj5cqy3klWv3vSCkXhxSaFpHWY"
+          "current_key": "AIzaSyBWJgJDLKo5ZKjuCM8wBW6Xbtq2xIJFiOU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "842250011410-9g1mnghdq6cnb4usemjk9sgiigamnulf.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:842250011410:android:96989e3c5b230fcd3429cb",
-        "android_client_info": {
-          "package_name": "com.example.testing"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "842250011410-9g1mnghdq6cnb4usemjk9sgiigamnulf.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCa9XH0qvj5cqy3klWv3vSCkXhxSaFpHWY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "842250011410-9g1mnghdq6cnb4usemjk9sgiigamnulf.apps.googleusercontent.com",
+              "client_id": "319046698481-hpr5k5itg33igh10f498c7r319vgco1f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

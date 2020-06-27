@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment { //we extend Fragment (not AppCompatActicity) so cannot use "findViewById"
 
    public HomeFragment(){}
 
@@ -41,9 +41,8 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = root.findViewById(R.id.recycler_menu);
 
-
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(root.getContext());
+        recyclerView.setHasFixedSize(true); //COMPULSORY
+        layoutManager = new LinearLayoutManager(root.getContext()); //"root.getContext()" instad of "this"
         recyclerView.setLayoutManager(layoutManager);
 
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(ProductsRef,Products.class).build();
