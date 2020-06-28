@@ -41,9 +41,9 @@ public class CategoryFragment extends Fragment{
             public void onClick(View v) {
                 Bundle bundle=new Bundle();
                 bundle.putString("key","officetables");
-                CategoryViewFragment category=new CategoryViewFragment();
-                category.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,category).addToBackStack("tag1").commit();
+                CategoryViewFragment categoryViewFragment=new CategoryViewFragment();
+                categoryViewFragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,categoryViewFragment).addToBackStack("tag1").commit();
             }
         });
 
@@ -52,10 +52,10 @@ public class CategoryFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Bundle bundle=new Bundle();
-                bundle.putString("category","officechairs");
-                CategoryViewFragment category=new CategoryViewFragment();
-                category.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,category).addToBackStack("tag1").commit();
+                bundle.putString("key","officechairs");
+                CategoryViewFragment categoryViewFragment=new CategoryViewFragment();
+                categoryViewFragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,categoryViewFragment).addToBackStack("tag1").commit();
             }
         });
 
@@ -64,10 +64,10 @@ public class CategoryFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Bundle bundle=new Bundle();
-                bundle.putString("category","officetables");
-                CategoryViewFragment category=new CategoryViewFragment();
-                category.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,category).addToBackStack("tag1").commit();
+                bundle.putString("key","officetables");
+                CategoryViewFragment categoryViewFragment=new CategoryViewFragment();
+                categoryViewFragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category ,categoryViewFragment).addToBackStack("tag1").commit();
             }
         });
 
