@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
      CheckBox checkBox ;
      TextView userTextView;
      TextView adminTextView;
+     TextView registerlink;
 
 
 
@@ -46,6 +47,13 @@ public class LoginActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.remember_me_checkbox);
         userTextView = findViewById(R.id.userTextview);
         adminTextView = findViewById(R.id.adminTextview);
+        registerlink=findViewById(R.id.registerlink);
+        registerlink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
 
         Paper.init(this);
         loginAccountButton.setOnClickListener(new View.OnClickListener() {

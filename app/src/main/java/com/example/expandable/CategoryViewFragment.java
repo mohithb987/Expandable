@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +26,7 @@ public class CategoryViewFragment extends Fragment {
 
     RecyclerView recyclerView1;
     RecyclerView.LayoutManager layoutManager1;
-
+    String productID,category;
 
     public CategoryViewFragment() {
         // Required empty public constructor
@@ -38,7 +39,7 @@ public class CategoryViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_category_view, container, false);
         Bundle bundle = this.getArguments();
-        String variable = bundle.getString("key");
+        category = bundle.getString("key");
         recyclerView1 = root.findViewById(R.id.recycler_menu1);
         DatabaseReference ProductsRef1 = FirebaseDatabase.getInstance().getReference().child("Products");
 
@@ -46,24 +47,34 @@ public class CategoryViewFragment extends Fragment {
         layoutManager1 = new LinearLayoutManager(root.getContext());
         recyclerView1.setLayoutManager(layoutManager1);
 
-        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(ProductsRef1.orderByChild("category").equalTo(variable),Products.class).build();
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(ProductsRef1.orderByChild("category").equalTo(category),Products.class).build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                 //Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText("Price = " + model.getPrice() + "$");
                 //holder.imageView.setImageURI(Uri.parse("content://com.android.providers.media.documents/document/image%3A25"));
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        productID=model.getPid();
+                        Bundle bundle=new Bundle();
+                        bundle.putString("key",productID);
+                        ProductDetailsFragment productDetailsFragment=new ProductDetailsFragment();
+                        productDetailsFragment.setArguments(bundle);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_category_view,productDetailsFragment).addToBackStack("tag").commit();
+                    }
+                });
                 Uri uri=Uri.parse(model.getImage());
-
                 Picasso.get().load(uri).into(holder.imageView);
 
             }
 
             @NonNull
             @Override
-            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public ProductViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_show, parent, false);
                 ProductViewHolder holder = new ProductViewHolder(view);
                 return holder;

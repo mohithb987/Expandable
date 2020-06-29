@@ -42,7 +42,7 @@ public class Products {
         this.pname = pname;
     }
 
-    public String getImage() {
+    public  String getImage() {
         return image;
     }
 

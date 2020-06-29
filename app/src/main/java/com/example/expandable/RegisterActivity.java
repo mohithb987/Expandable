@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"This Phone has already been registered",Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Toast.makeText(RegisterActivity.this,"Please try again with new number",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                     startActivity(intent);
                 }
             }
