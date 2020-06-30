@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
      TextView userTextView;
      TextView adminTextView;
      TextView registerlink;
+    DatabaseReference  rootRef;
+    String phone,Password;
 
 
 
@@ -82,9 +84,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+
     public void LoginUser(){
-        String phone = loginPhone.getText().toString();
-        String Password =loginPassword.getText().toString();
+         phone = loginPhone.getText().toString();
+         Password =loginPassword.getText().toString();
 
          if(TextUtils.isEmpty(Password)){
             loginPassword.setError("Name is required");
@@ -107,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         }
-        final DatabaseReference  rootRef;
+
         rootRef = FirebaseDatabase.getInstance().getReference();
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -126,15 +130,16 @@ public class LoginActivity extends AppCompatActivity {
                             else{
                                 Toast.makeText(LoginActivity.this,"logged in Succesfully",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
+                                Prevalent.onlineUser=userData;
                                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                 startActivity(intent);
                                 finish();
-
                             }
 
                         }
                         else{
                             Toast.makeText(LoginActivity.this,"Password is Incorrect",Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
 
                         }
                     }

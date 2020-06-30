@@ -27,7 +27,7 @@ public class CategoryViewFragment extends Fragment {
     RecyclerView recyclerView1;
     RecyclerView.LayoutManager layoutManager1;
     String productID,category;
-
+    String username;
     public CategoryViewFragment() {
         // Required empty public constructor
     }
@@ -60,6 +60,7 @@ public class CategoryViewFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         productID=model.getPid();
+
                         Bundle bundle=new Bundle();
                         bundle.putString("key",productID);
                         ProductDetailsFragment productDetailsFragment=new ProductDetailsFragment();
